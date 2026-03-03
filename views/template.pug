@@ -1,0 +1,22 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title= title
+        include style.pug
+    body 
+        header 
+            include nav.pug
+
+        main 
+            h2 main template
+            .content
+                block content
+        footer 
+            block end
+
+            h3 contact 
+            .form 
+                form(action="/contact", method="post") 
+                    input(type="text", name="name", placeholder="NAME")

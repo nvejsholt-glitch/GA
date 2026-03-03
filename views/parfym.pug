@@ -1,0 +1,11 @@
+extends template.pug 
+
+block content 
+    if perfumes
+        each g in perfumes
+            .perfumes
+                h3 brand: #{g.brand}
+                p   
+                    i model: #{g.model}
+    else 
+        h3 no perfumes

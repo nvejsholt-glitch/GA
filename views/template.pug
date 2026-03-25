@@ -1,22 +1,57 @@
 doctype html
 html(lang="en")
-    head
-        meta(charset="UTF-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title= title
-        include style.pug
-    body 
-        header 
-            include nav.pug
+	head
+		meta(charset="UTF-8")
+		meta(name="viewport", content="width=device-width, initial-scale=1.0")
+		title= title
+		include style.pug
 
-        main 
-            h2 main template
-            .content
-                block content
-        footer 
-            block end
+		style.
+			div {
+				border: 1px solid black;
+				padding: 1%;
+			}
+			a {
+				text-decoration: none;
+				color: black;
+			}
+			nav {
+				border: 1px solid black;
+				gap: 20px;
+				padding: 3px;
+			}
 
-            h3 contact 
-            .form 
-                form(action="/contact", method="post") 
-                    input(type="text", name="name", placeholder="NAME")
+	body
+		header
+			if auth
+				include authnav.pug
+			else 
+				include nav.pug
+
+		main
+			.content
+				block content
+				
+
+		footer
+			block end
+
+		
+			#register.forms 
+				form(action="/register" method="post")
+					input(type="email", name="email", placeholder="Email", required)
+					input(type="password", name="password", placeholder="Password", required)
+					input(type="submit", value="REGISTER")
+
+			#login.forms
+				form(action="/login" method="post")
+					input(type="email", name="email", value="test@test.com" placeholder="Email", required)
+					input(type="password", name="password", placeholder="Password", required)
+					input(type="submit", value="LOGIN")
+			
+			#create.forms
+				if auth
+					form(action="/products/create", method="post") 
+						input(type="text", name="name", placeholder="Name", required)
+						input(type="number", name="price", placeholder="Price", required)
+						input(type="submit", value="Create Product")

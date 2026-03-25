@@ -1,0 +1,12 @@
+extends template
+
+block content
+	h1 Produkter
+
+	each p in products
+		div
+			h2= p.name
+			h3= p.price + " kr"
+			if user
+				if user.id == p.uid
+					a(href=`/products/delete/${p.id}`) delete

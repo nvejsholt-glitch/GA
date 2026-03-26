@@ -9,4 +9,5 @@ block content
 			h3= p.price + " kr"
 			if user
 				if user.id == p.uid
-					a(href=`/products/delete/${p.id}`) delete
+					a(href=`/products/delete/${p.id}`).btn Delete
+					a(href=`/products/update/${p.id}`).btn Update

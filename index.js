@@ -37,13 +37,19 @@ function auth(req, res, next) {
 
 app.use((req, res, next) => {
 
+    // res är objekt som ansvarar för svaret som skickas till klienten. res.locals är ett
+    // res.locals är ett objekt som används för att lagra data som ska vara tillgänglig 
+    // i alla vyer (views) som renderas av Express. 
+    // Det är ett sätt att dela data mellan middleware och vyer 
+    // utan att behöva passera den explicit i varje renderingsanrop.
     res.locals.auth = req.session.auth || false
     res.locals.user = req.session.user || null
     next();
 })
 
 
-
+// Middleware för att parsa inkommande request body som urlencoded data (t.ex. från formulär)
+// Datan hamnar i req.body
 app.use(express.urlencoded({ extended: true }))
 
 
@@ -56,6 +62,7 @@ app.get("/", auth, (req, res) => {
 
 app.get("/logout", auth, (req, res) => {
 
+    // Här förstör vi vår session så att en användare verkligen är utloggad. 
     req.session.destroy()
     res.redirect("/")
 

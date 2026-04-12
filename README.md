@@ -471,14 +471,3 @@ extends template så den bygger på på template.pug
 block content är det som då sätts in i template vid block content
 
 each p så för varje produkt skriver den i h2 namn, h3 pris och om id:et av användaren matchar p.uid som är en kopia av id:et som skaparen hade så står det en delete knapp
-***
-```js
-
-```
-Här skriver du fakta om kodan ovan
-***
-```js
-
-```
-Här skriver du fakta om kodan ovan
-***
